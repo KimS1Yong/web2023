@@ -1,9 +1,14 @@
 body {
+   font-family: 'Lobster', sans-serif;
    margin: 0px; /*<!-- 언제나 전체 body에는 margin 값을 0으로 세팅해준다-->*/
    font-size: 18px;
    color: black;
-   background: url("image/back.jpeg");
+   background-image: linear-gradient(
+      rgba(256,256,256,.1),
+      rgba(256,256,256,.1)
+   ), url("image/back.jpeg");
    background-size: cover;
+   
 }
 #box {
    position: relative;
@@ -12,7 +17,7 @@ body {
 }
 #top {
    height: 150px;
-   font-size: 50px;
+   font-size: 45px;
    font-weight: bold;
    text-align: center;
    top: 50px;
@@ -32,10 +37,11 @@ body {
 #pl, #laliga, #bundesliga, #serie_a, #ligue1 {
    height: 300px;
    width: 20%;
-
+   cursor: pointer;
 }
 img {
    height: 250px;
    width: 80%;
    vertical-align: middle;
+   cursor: pointer;
 }
