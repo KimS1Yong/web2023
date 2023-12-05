@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 
 var connection = mysql.createConnection({
 	host     : 'localhost',
-	user     : 'web2020',
-	password : 'web2020',
+	user     : 'root',
+	password : '1234',
 	database : 'web'
 });
 
@@ -41,9 +41,6 @@ app.use('/', function(request, response, next) {
 	}
 });
 
-app.get('/', function(request, response) {
-	response.sendFile(path.join(__dirname + '/my/home.html'));
-});
 
 app.get('/login', function(request, response) {
 	response.sendFile(path.join(__dirname + '/my/login.html'));
@@ -58,7 +55,7 @@ app.post('/login', function(request, response) {
 			if (results.length > 0) {
 				request.session.loggedin = true;
 				request.session.username = username;
-				response.redirect('/home');
+				response.redirect('/index0');
 				response.end();
 			} else {
 				//response.send('Incorrect Username and/or Password!');
@@ -110,23 +107,15 @@ app.get('/logout', function(request, response) {
 	response.end();
 });
 
-app.get('/home', restrict, function(request, response) {
+app.get('/index0', restrict, function(request, response) {
 	if (request.session.loggedin) {
-		response.sendFile(path.join(__dirname + '/my/home.html'));
+		response.sendFile(path.join(__dirname + '/index0.html'));
 	} else {
 		response.send('Please login to view this page!');
 		response.end();
 	}
 });
 
-app.get('/test2', function(request, response) {
-	if (request.session.loggedin) {
-		response.sendFile(path.join(__dirname + '/my/test2.html'));
-	} else {
-		response.send('Please login to view this page!');
-		response.end();
-	}
-});
 
 app.listen(3000, function () {
     console.log('Server Running at http://127.0.0.1:3000');

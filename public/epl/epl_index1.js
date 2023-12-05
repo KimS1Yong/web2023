@@ -3,10 +3,10 @@ let currentPage = 1;
 function goToPage(page) {
     console.log(`Go to page ${page}`);
     if(page ==0) {
-        window.location.href=`C:/Users/user/OneDrive/Desktop/고급웹 프로젝트/index0.html`
+        window.location.href=`/index0`
     }
-    else{
-        window.location.href=`bundes_index${page}.html`
+    else {
+        window.location.href=`epl_index${page}.html`
     }
 }
 
@@ -18,7 +18,7 @@ function prevPage() {
 }
 
 function nextPage() {
-    if (currentPage < 3) {
+    if (currentPage < 2) {
         currentPage++;
         goToPage(currentPage);
     }

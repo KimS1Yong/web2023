@@ -14,9 +14,10 @@ body {
    position: relative;
    height: auto;
 }
-#login {
+#logout {
    position: absolute;
-   right: 20px;
+   right: 10px;
+   font-size: 10px
 }
 a {
    cursor: pointer;
