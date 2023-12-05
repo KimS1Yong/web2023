@@ -1,0 +1,59 @@
+body {
+   font-family: Arial, sans-serif;
+   background-color: #f4f4f4;
+   margin: 0;
+}
+
+.player-profile {
+   display: flex;
+   max-width: 800px;
+   margin: 50px auto;
+   padding: 20px;
+   line-height: 100%;
+   background-image: linear-gradient(
+      rgba(256,256,256,.8),
+      rgba(256,256,256,.8)
+   ), url("C:/Users/user/OneDrive/Desktop/고급웹 프로젝트/image/슈투트가르트.png");
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   background-position: center top;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.player-image {
+   text-align: center;
+}
+
+.player-image img {
+   max-width: 100%;
+}
+
+.player-details {
+   flex: 1;
+   text-align: left;
+}
+
+.player-details::after {
+   content: "";
+   clear: both;
+}
+
+.page {
+   max-width: 800px;
+   margin: 20px auto;
+   text-align: center;
+}
+
+.page-num {
+   display: inline-block;
+   margin: 0 5px;
+   cursor: pointer;
+}
+
+.arrow {
+   font-size: 20px;
+   margin: 0 10px;
+   cursor: pointer;
+}
