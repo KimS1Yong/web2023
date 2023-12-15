@@ -4,6 +4,16 @@
 		<meta charset="utf-8">
 		<title>Register Form</title>
 		<style>
+		body {
+			padding: 0px;
+			margin: 0px;
+			background-image: linear-gradient(
+				rgba(256,256,256,.3),
+				rgba(256,256,256,.3)
+			), url("image/login_back.jpg");
+			background-repeat: no-repeat;
+   		background-size: 100% 180%;
+		}
 		.register-form {
 			width: 300px;
 			margin: 0 auto;
@@ -49,7 +59,7 @@
 	</head>
 	<body>
 		<div class="register-form">
-			<h1>register Form</h1>
+			<h1>I.K.E.L register Form</h1>
 			<form action="/register" method="POST">
 				<input type="text" name="username" placeholder="Username" required>
 				<input type="password" name="password" placeholder="Password" required>

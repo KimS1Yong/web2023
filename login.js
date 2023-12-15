@@ -1,9 +1,9 @@
-var fs = require('fs');
 var path = require('path');
 var mysql = require('mysql');
 var express = require('express');
 var session = require('express-session');
 var bodyParser = require('body-parser');
+var ejs = require('ejs');
 
 var connection = mysql.createConnection({
 	host     : 'localhost',
@@ -13,6 +13,10 @@ var connection = mysql.createConnection({
 });
 
 var app = express();
+
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(session({
 	secret: 'secret',
 	resave: true,
@@ -89,9 +93,9 @@ app.post('/register', function(request, response) {
                 else
                   console.log(data);
         });
-			  response.send(username + ' Registered Successfully!<br><a href="/home">Home</a>');
+			  response.send(username + ' Registered Successfully!<br><a href="/my/login.html">Home</a>');
 			} else {
-				response.send(username + ' Already exists!<br><a href="/home">Home</a>');
+				response.send(username + ' Already exists!<br><a href="/home">/my/login.html</a>');
 			}			
 			response.end();
 		});
@@ -100,6 +104,39 @@ app.post('/register', function(request, response) {
 		response.end();
 	}
 });
+
+app.get('/cheering', function(request, response) {
+	response.sendFile(path.join(__dirname + '/my/cheering.html'));
+});
+
+app.post('/cheering', function(request, response) {
+	var content = request.body.content;
+	if (content) {
+		connection.query('SELECT * FROM cheer WHERE content = ?', [content], function(error, results, fields){
+			if (error) throw error;
+        	connection.query('INSERT INTO cheer (content) VALUES(?)', [content], function (error, data) {
+                if (error)
+                  console.log(error);
+                else
+                  console.log(data);
+				});
+			
+			response.send(' Postered Successfully!<br><a href="/board">Post Board</a>');	
+	});
+	} else {
+		response.send('Please input content!');
+	}
+});
+
+app.get('/board', function(req, res) {
+	connection.query('SELECT * FROM cheer', (error, results, fields) => {
+		if (error) throw error;
+  
+		res.render('board', { cheers: results });
+	 });
+});
+
+
 
 app.get('/logout', function(request, response) {
   request.session.loggedin = false;
