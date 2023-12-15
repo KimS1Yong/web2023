@@ -9,10 +9,10 @@ CREATE TABLE user (
   email varchar(100) NOT NULL
 )
 
-INSERT INTO user (id, username, password, email) VALUES (1, 'test', 'test', 'test@test.com');
-INSERT INTO user (username, password, email) VALUES ('test2', 'test2', 'test2@test.com');
+INSERT INTO web.user (id, username, password, email) VALUES (1, 'test', 'test', 'test@test.com');
+INSERT INTO web.user (username, password, email) VALUES ('test2', 'test2', 'test2@test.com');
 
-CREATE TABLE web.cheer (
+CREATE TABLE cheer (
   post_id int NOT NULL AUTO_INCREMENT=1 PRIMARY KEY,
   content TEXT
 )
